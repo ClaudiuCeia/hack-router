@@ -1,4 +1,9 @@
 {
+  "name": "fredemmott/hack-router",
+  "description": "URI map generator for Hack",
+  "keywords": ["hack", "URIMap", "hhvm"],
+  "homepage": "https://github.com/fredemmott/hack-router",
+  "license": ["MIT"],
   "require": {
     "hhvm": "~3.6",
     "fredemmott/definition-finder": "~0.1.0"
