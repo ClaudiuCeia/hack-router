@@ -32,3 +32,21 @@ class BlogPostController implements URIRoutable {
   }
 }
 ```
+
+As this is a bit verbose, a short-hand is supported:
+
+```Hack
+use FredEmmott\HackRouter\URIPart;
+use FredEmmott\HackRouter\URIParam;
+use FredEmmott\HackRouter\URIRoutable;
+
+class BlogPostController implements URIRoutable {
+  public static function getURIParts(): Vector<URIPart> {
+    // eg '/blog/123/hello_world'
+    return Vector {
+      URIPart::string('blog'),
+      URIParam::int('id'),
+      URIParam::string('tagline'),
+    };
+  }
+}

@@ -3,6 +3,10 @@
 namespace FredEmmott\HackRouter;
 
 abstract class URIParam extends URIPart {
+  public static function int(string $name): URIPart {
+    return new URIIntParam($name);
+  }
+
   public function __construct(
     private string $name,
   ) {
@@ -16,5 +20,17 @@ abstract class URIParam extends URIPart {
 
   final public function getName(): string {
     return $this->name;
+  }
+}
+
+final class URIIntParam extends URIParam {
+  protected static function getPattern(): string {
+    return "\d+";
+  }
+}
+
+final class URIStringParam extends URIParam {
+  protected static function getPattern(): string {
+    return "[^/]+";
   }
 }
