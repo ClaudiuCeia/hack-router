@@ -1,0 +1,60 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "fc85577db6132e529a596a2dd7adbbe7",
+    "packages": [
+        {
+            "name": "fredemmott/definition-finder",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fredemmott/definitions-finder.git",
+                "reference": "a72a90eaf4a99e7955717a7b68412f0456c13f32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fredemmott/definitions-finder/zipball/a72a90eaf4a99e7955717a7b68412f0456c13f32",
+                "reference": "a72a90eaf4a99e7955717a7b68412f0456c13f32",
+                "shasum": ""
+            },
+            "require": {
+                "hhvm": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Find definitions in PHP or Hack files. Useful for autoloaders.",
+            "homepage": "https://github.com/fredemmott/definitions-finder",
+            "keywords": [
+                "autoload",
+                "definitions",
+                "hack",
+                "hhvm"
+            ],
+            "time": "2015-08-03 00:36:24"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "hhvm": "~3.6"
+    },
+    "platform-dev": []
+}

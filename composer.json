@@ -1,0 +1,9 @@
+{
+  "require": {
+    "hhvm": "~3.6",
+    "fredemmott/definition-finder": "~0.1.0"
+  },
+  "autoload": {
+    "classmap": ["src/"]
+  }
+}

@@ -1,0 +1,10 @@
+vendor/
+*.swp
+www.pid
+.production-marker
+.urimap-cache
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
