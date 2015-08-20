@@ -26,12 +26,18 @@ class URIMap<Tbase as URIRoutable> {
       );
 
     foreach ($classes as $class) {
-      $re_parts = $class::getURIParts()->map(
-        $part ==> $part->toRegExp()
-      );
-      $re = '#^/'.implode('/', $re_parts).'/?$#';
+      $re = self::generateForParts($class::getURIParts());
       $map[$re] = $class;
     }
     return $map;
+  }
+
+  public static function generateForParts(
+    \ConstVector<URIPart> $parts,
+  ): string {
+    $re_parts = $parts->map(
+      $part ==> $part->toRegExp()
+    );
+    return '#^/'.implode('/', $re_parts).'/?$#';
   }
 }
