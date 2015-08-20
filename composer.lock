@@ -4,37 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fc85577db6132e529a596a2dd7adbbe7",
+    "hash": "72914be4a177ac7276688821b1fdd4cc",
     "packages": [
         {
             "name": "fredemmott/definition-finder",
-            "version": "v0.1",
+            "version": "v0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fredemmott/definitions-finder.git",
-                "reference": "a72a90eaf4a99e7955717a7b68412f0456c13f32"
+                "reference": "8f6eb161bebadde37d2a031f67e5456c82fe8459"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fredemmott/definitions-finder/zipball/a72a90eaf4a99e7955717a7b68412f0456c13f32",
-                "reference": "a72a90eaf4a99e7955717a7b68412f0456c13f32",
+                "url": "https://api.github.com/repos/fredemmott/definitions-finder/zipball/8f6eb161bebadde37d2a031f67e5456c82fe8459",
+                "reference": "8f6eb161bebadde37d2a031f67e5456c82fe8459",
                 "shasum": ""
             },
             "require": {
-                "hhvm": "*"
+                "hhvm": "~3.9"
             },
             "require-dev": {
+                "hhvm/systemlib-extractor": "^0.1.0",
                 "phpunit/phpunit": "4.5.*"
             },
             "type": "library",
             "autoload": {
+                "classmap": [
+                    "src/"
+                ],
                 "files": [
-                    "bootstrap.php"
+                    "src/typedefs.php",
+                    "src/utils.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "description": "Find definitions in PHP or Hack files. Useful for autoloaders.",
             "homepage": "https://github.com/fredemmott/definitions-finder",
@@ -44,7 +49,7 @@
                 "hack",
                 "hhvm"
             ],
-            "time": "2015-08-03 00:36:24"
+            "time": "2015-08-20 01:26:47"
         }
     ],
     "packages-dev": [],
@@ -54,7 +59,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "hhvm": "~3.6"
+        "hhvm": "~3.9.0"
     },
     "platform-dev": []
 }

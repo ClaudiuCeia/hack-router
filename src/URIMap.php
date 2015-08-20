@@ -2,29 +2,35 @@
 
 namespace FredEmmott\HackRouter;
 
-class URIMap {
-  public function __construct(private string $root) {}
+use FredEmmott\DefinitionFinder\TreeParser;
 
-  public function generate(): Map<string, string> {
+class URIMap<Tbase as URIRoutable> {
+  public function __construct(
+    private string $root,
+    private classname<Tbase> $base,
+  ) {}
+
+  public function generate(): Map<string, classname<Tbase>> {
     $map = Map { };
-    $classes = (new \FredEmmott\DefinitionFinder\TreeWalker($this->root))
-      ->getClasses()
-      ->keys();
-    $classes = $classes
+    $classes = TreeParser::FromPath($this->root)
+      ->getClassNames()
       ->filter($class ==> {
         $rc = new \ReflectionClass($class);
         return
           $rc->isInstantiable()
-          && $rc->implementsInterface(URIRoutable::class);
-      });
+          && $rc->isSubclassOf($this->base);
+      })->map(
+        function(string $name): classname<Tbase> {
+          return /* UNSAFE_EXPR */ $name;
+        }
+      );
+
     foreach ($classes as $class) {
-      // UNSAFE because Hack doesn't understand that $class is a subclass
-      // of URIRoutable
       $re_parts = $class::getURIParts()->map(
         $part ==> $part->toRegExp()
       );
       $re = '#^/'.implode('/', $re_parts).'/?$#';
-      $map[$re] = (string) $class;
+      $map[$re] = $class;
     }
     return $map;
   }
