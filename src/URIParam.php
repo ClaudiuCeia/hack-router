@@ -7,6 +7,10 @@ abstract class URIParam extends URIPart {
     return new URIIntParam($name);
   }
 
+  public static function string(string $name): URIPart {
+    return new URIStringParam($name);
+  }
+
   public function __construct(
     private string $name,
   ) {
