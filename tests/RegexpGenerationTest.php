@@ -23,6 +23,10 @@ class RegexpGenerationTest extends \PHPUnit_Framework_TestCase {
         '#^/user/(?<username>[^/]+)/?$#',
         Vector {URIPart::string('user'), URIParam::string('username')},
       ],
+      'enum param' => [
+        '#^/(?<foo>(herp|derp))/?$#',
+        Vector {URIParam::enum('foo', Set { 'herp', 'derp' }) },
+      ],
     ];
   }
 
