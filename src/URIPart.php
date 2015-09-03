@@ -4,6 +4,7 @@ namespace FredEmmott\HackRouter;
 
 abstract class URIPart {
   abstract public function toRegExp(): string;
+  abstract public function toFastRoute(): string;
 
   public static function string(string $s): URIPart {
     return new URIStaticPart($s);
@@ -16,5 +17,9 @@ final class URIStaticPart extends URIPart {
 
   public function toRegExp(): string {
     return preg_quote($this->part, '#');
+  }
+
+  public function toFastRoute(): string{
+    return $this->part;
   }
 }

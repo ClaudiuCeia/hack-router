@@ -10,8 +10,8 @@ final class URIEnumParam extends URIParam {
     parent::__construct($name);
   }
 
-  protected function getPattern(): string {
+  public function getPattern(): string {
     $quoted = $this->values->map($v ==> preg_quote($v, '#'));
-    return '('.implode('|', $quoted).')';
+    return '(?:'.implode('|', $quoted).')';
   }
 }

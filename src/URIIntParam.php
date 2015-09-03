@@ -3,7 +3,7 @@
 namespace FredEmmott\HackRouter;
 
 final class URIIntParam extends URIParam {
-  protected function getPattern(): string {
+  public function getPattern(): string {
     return "\d+";
   }
 }

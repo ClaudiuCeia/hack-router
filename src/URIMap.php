@@ -10,9 +10,49 @@ class URIMap<Tbase as URIRoutable> {
     private classname<Tbase> $base,
   ) {}
 
-  public function generate(): Map<string, classname<Tbase>> {
+  public function generateRegexpMap(): Map<string, classname<Tbase>> {
     $map = Map { };
-    $classes = TreeParser::FromPath($this->root)
+
+    foreach ($this->getClassNames() as $class) {
+      foreach ($class::getURIs() as $parts) {
+        $re = self::generateRegexpForParts($parts);
+        $map[$re] = $class;
+      }
+    }
+
+    return $map;
+  }
+
+  public function generateFastRouteMap(): Map<string, classname<Tbase>> {
+    $map = Map { };
+
+    foreach ($this->getClassNames() as $class) {
+      foreach ($class::getURIs() as $parts) {
+        $re = self::generateFastRouteStringForParts($parts);
+        $map[$re] = $class;
+      }
+    }
+
+    return $map;
+  }
+
+  public static function generateRegexpForParts(
+    Iterable<URIPart> $parts,
+  ): string {
+    $re_parts = $parts->map(
+      $part ==> $part->toRegExp()
+    );
+    return '#^/'.implode('/', $re_parts).'/?$#';
+  }
+
+  public static function generateFastRouteStringForParts(
+    Iterable<URIPart> $parts,
+  ): string {
+    return '/'.implode('/', $parts->map($part ==> $part->toFastRoute()));
+  }
+
+  private function getClassNames(): Iterable<classname<Tbase>> {
+    return TreeParser::FromPath($this->root)
       ->getClassNames()
       ->filter($class ==> {
         $rc = new \ReflectionClass($class);
@@ -24,20 +64,5 @@ class URIMap<Tbase as URIRoutable> {
           return /* UNSAFE_EXPR */ $name;
         }
       );
-
-    foreach ($classes as $class) {
-      $re = self::generateForParts($class::getURIParts());
-      $map[$re] = $class;
-    }
-    return $map;
-  }
-
-  public static function generateForParts(
-    \ConstVector<URIPart> $parts,
-  ): string {
-    $re_parts = $parts->map(
-      $part ==> $part->toRegExp()
-    );
-    return '#^/'.implode('/', $re_parts).'/?$#';
   }
 }

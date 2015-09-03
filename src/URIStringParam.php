@@ -3,7 +3,7 @@
 namespace FredEmmott\HackRouter;
 
 final class URIStringParam extends URIParam {
-  protected function getPattern(): string {
+  public function getPattern(): string {
     return "[^/]+";
   }
 }

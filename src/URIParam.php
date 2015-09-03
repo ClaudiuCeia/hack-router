@@ -24,7 +24,11 @@ abstract class URIParam extends URIPart {
     return '(?<'.preg_quote($this->getName(), '#').'>'.$this->getPattern().')';
   }
 
-  abstract protected function getPattern(): string;
+  final public function toFastRoute(): string {
+    return '{'.$this->getName().':'.$this->getPattern().'}';
+  }
+
+  abstract public function getPattern(): string;
 
   final public function getName(): string {
     return $this->name;
