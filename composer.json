@@ -9,7 +9,8 @@
     "fredemmott/definition-finder": "~0.3.4"
   },
   "require-dev": {
-    "phpunit/phpunit": "4.8.*"
+    "phpunit/phpunit": "4.8.*",
+    "91carriage/phpunit-hhi": "4.8.*"
   },
   "autoload": {
     "classmap": ["src/"]

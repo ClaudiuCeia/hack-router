@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fde14d3391d2e8cb3aea6aaa9553a327",
+    "hash": "a4fce7837b1747fd18ec00e5b48681d9",
     "packages": [
         {
             "name": "fredemmott/definition-finder",
@@ -53,6 +53,37 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "91carriage/phpunit-hhi",
+            "version": "4.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.simon.geek.nz/91-carriage/phpunit-hhi.git",
+                "reference": "4dfd05a467b9c0c83a1734cc1ac7f997dc5cb6ab"
+            },
+            "require": {
+                "hhvm": ">=3.9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "HHI definitions for PHPUnit",
+            "homepage": "https://git.simon.geek.nz/91-carriage/phpunit-hhi",
+            "keywords": [
+                "hack",
+                "hhvm",
+                "phpunit",
+                "testing"
+            ],
+            "time": "2015-09-02 11:26:34"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
