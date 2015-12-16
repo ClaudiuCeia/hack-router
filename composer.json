@@ -5,7 +5,7 @@
   "homepage": "https://github.com/fredemmott/hack-router",
   "license": ["MIT"],
   "require": {
-    "hhvm": "~3.9.0",
+    "hhvm": "~3.9",
     "fredemmott/definition-finder": "~0.3.4"
   },
   "require-dev": {
