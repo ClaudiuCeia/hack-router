@@ -13,7 +13,7 @@
 namespace FredEmmott\HackRouter;
 
 abstract class RoutingException extends \Exception {
-  protected function __construct(
+  public function __construct(
     string $message,
     private string $requestMethod,
     private string $requestedPath,
