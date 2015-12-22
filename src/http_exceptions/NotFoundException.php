@@ -12,7 +12,7 @@
 
 namespace FredEmmott\HackRouter;
 
-final class NotFoundException extends RoutingException {
+class NotFoundException extends HTTPException {
   public function __construct(string $method, string $path) {
     parent::__construct(
       "Not Found: ".$path,

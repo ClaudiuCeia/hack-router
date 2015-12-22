@@ -12,20 +12,5 @@
 
 namespace FredEmmott\HackRouter;
 
-abstract class RoutingException extends \Exception {
-  public function __construct(
-    string $message,
-    private string $requestMethod,
-    private string $requestedPath,
-  ) {
-    parent::__construct($message);
-  }
-
-  public function getRequestMethod(): string {
-    return $this->requestMethod;
-  }
-
-  public function getRequestedPath(): string {
-    return $this->requestedPath;
-  }
+class InternalServerErrorException extends HTTPException {
 }

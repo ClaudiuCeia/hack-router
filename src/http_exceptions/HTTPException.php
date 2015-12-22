@@ -1,5 +1,6 @@
 <?hh // strict
 /*
+ *  Copyright (c) 2015, Facebook, Inc.
  *  Copyright (c) 2015, Fred Emmott
  *  All rights reserved.
  *
@@ -11,20 +12,20 @@
 
 namespace FredEmmott\HackRouter;
 
-final class UnknownException extends RoutingException {
+abstract class HTTPException extends \Exception {
   public function __construct(
-    private array<mixed> $fastRouteResult,
-    string $method,
-    string $path,
+    string $message,
+    private string $requestMethod,
+    private string $requestedPath,
   ) {
-    parent::__construct(
-      "Unknown FastRoute result: ".var_export($fastRouteResult, true),
-      $method,
-      $path,
-    );
+    parent::__construct($message);
   }
 
-  public function getFastRouteResult(): array<mixed> {
-    return $this->fastRouteResult;
+  public function getRequestMethod(): string {
+    return $this->requestMethod;
+  }
+
+  public function getRequestedPath(): string {
+    return $this->requestedPath;
   }
 }

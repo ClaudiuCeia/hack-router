@@ -12,7 +12,7 @@
 
 namespace FredEmmott\HackRouter;
 
-final class MethodNotAllowedException extends RoutingException {
+class MethodNotAllowedException extends HTTPException {
   public function __construct(string $method, string $path) {
     parent::__construct(
       "Method Not Allowed: ".$method.' ('.$path.')',
