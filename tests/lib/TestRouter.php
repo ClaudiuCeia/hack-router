@@ -2,15 +2,20 @@
 
 namespace FredEmmott\HackRouter\Tests;
 
-use FredEmmott\HackRouter\GETOnlyRouter;
+use FredEmmott\HackRouter\BaseRouter;
+use FredEmmott\HackRouter\HttpMethod;
 
-final class TestRouter<T> extends GETOnlyRouter<T> {
+final class TestRouter<T> extends BaseRouter<T> {
   public function __construct(
     private ImmMap<string, T> $routes,
   ) {
   }
 
-  protected function getGETRoutes(): ImmMap<string, T> {
-    return $this->routes;
+  <<__Override>>
+  protected function getRoutes(
+  ): ImmMap<HttpMethod, ImmMap<string, T>> {
+    return ImmMap {
+      HttpMethod::GET => $this->routes,
+    };
   }
 }

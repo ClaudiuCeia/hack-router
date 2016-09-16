@@ -24,7 +24,7 @@ final class CoreTest extends \PHPUnit_Framework_TestCase {
     ImmMap<string, string> $expected_data,
   ): void {
     list($actual_responder, $actual_data) =
-      $this->getRouter()->routeRequest('GET', $in);
+      $this->getRouter()->routeRequest(HttpMethod::GET, $in);
     $this->assertSame($expected_responder, $actual_responder);
     $this->assertEquals(
       $expected_data->toArray(),
@@ -36,14 +36,14 @@ final class CoreTest extends \PHPUnit_Framework_TestCase {
    * @expectedException \FredEmmott\HackRouter\NotFoundException
    */
   public function testNotFound(): void {
-    $this->getRouter()->routeRequest('GET', '/__404');
+    $this->getRouter()->routeRequest(HttpMethod::GET, '/__404');
   }
 
   /**
    * @expectedException \FredEmmott\HackRouter\MethodNotAllowedException
    */
   public function testMethodNotAllowed(): void {
-    $this->getRouter()->routeRequest('POST', '/foo');
+    $this->getRouter()->routeRequest(HttpMethod::POST, '/foo');
   }
 
   <<__Memoize>>
