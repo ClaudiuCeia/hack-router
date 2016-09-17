@@ -9,5 +9,5 @@
 namespace FredEmmott\HackRouter;
 
 interface UriPatternPart {
-   abstract public function getFastRouteFragment(): string;
+   public function getFastRouteFragment(): string;
  }
