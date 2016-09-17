@@ -9,7 +9,9 @@
 
 namespace FredEmmott\HackRouter;
 
-final class UriPatternStringParameter extends UriPatternParameter<string> {
+final class UriPatternStringParameter
+extends UriPatternParameter
+implements UriPatternTypedParameter<string> {
   <<__Override>>
   public function assert(string $input): string{
     return $input;
