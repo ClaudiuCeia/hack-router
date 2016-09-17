@@ -15,6 +15,11 @@ class UriPattern implements UriPatternPart {
   private Vector<UriPatternPart> $parts = Vector { };
 
   final public function appendPart(UriPatternPart $part): this {
+    if ($part instanceof UriPattern) {
+      $this->parts->addAll($part->parts);
+      return $this;
+    }
+    
     $this->parts[] = $part;
     return $this;
   }
