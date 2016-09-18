@@ -10,8 +10,7 @@
 namespace FredEmmott\HackRouter;
 
 final class UriPatternIntParameter
-extends UriPatternParameter
-implements UriPatternTypedParameter<int> {
+extends UriPatternTypedParameter<int> {
   <<__Override>>
   public function assert(string $input): int {
     invariant(

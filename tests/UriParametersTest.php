@@ -3,6 +3,7 @@
 namespace FredEmmott\HackRouter;
 
 use \FredEmmott\HackRouter\Tests\TestIntEnum;
+use \FredEmmott\HackRouter\Tests\TestStringEnum;
 
 final class UriParametersTest extends \PHPUnit_Framework_TestCase {
   public function testStringParam(): void {
@@ -46,6 +47,23 @@ final class UriParametersTest extends \PHPUnit_Framework_TestCase {
 
     $typechecker_test = (TestIntEnum $x) ==> {};
     $typechecker_test($value);
+  }
+
+  public function testEnumParamToUri(): void {
+    $part = (new UriPatternEnumParameter(TestIntEnum::class, 'foo'));
+    $this->assertSame(
+      (string) TestIntEnum::BAR,
+      $part->getUriFragment(TestIntEnum::BAR),
+    );
+  }
+
+  /**
+   * @expectedException UnexpectedValueException
+   */
+  public function testInvalidEnumParamToUri(): void {
+    $part = (new UriPatternEnumParameter(TestIntEnum::class, 'foo'));
+    /* HH_IGNORE_ERROR[4110] intentionally doing the wrong thing */
+    $_throws = $part->getUriFragment(TestStringEnum::BAR);
   }
 
   public function testFromPattern(): void {

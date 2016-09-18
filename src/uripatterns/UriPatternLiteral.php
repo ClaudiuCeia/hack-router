@@ -22,4 +22,8 @@ final class UriPatternLiteral implements UriPatternPart {
     );
     return $value;
   }
+
+  public function getValue(): string {
+    return $this->value;
+  }
 }

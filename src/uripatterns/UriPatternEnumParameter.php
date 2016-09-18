@@ -10,8 +10,7 @@
 namespace FredEmmott\HackRouter;
 
 class UriPatternEnumParameter<T>
-extends UriPatternParameter
-implements UriPatternTypedParameter<T> {
+extends UriPatternTypedParameter<T> {
   public function __construct(
     /* HH_FIXME[2053] */
     private classname<\HH\BuiltinEnum<T>> $enumClass,
@@ -25,6 +24,11 @@ implements UriPatternTypedParameter<T> {
     return $this->enumClass;
   }
 
+  <<__Override>>
+  final public function getUriFragment(T $value): string {
+    $class = $this->enumClass;
+    return (string) $class::assert($value);
+  }
 
   <<__Override>>
   public function assert(string $input): T {
