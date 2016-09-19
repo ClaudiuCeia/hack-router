@@ -16,19 +16,19 @@ namespace FredEmmott\HackRouter\Examples\UrlPatternsExample;
 require_once('../vendor/autoload.php');
 
 use FredEmmott\HackRouter\BaseRouter;
+use FredEmmott\HackRouter\HasUriPattern;
 use FredEmmott\HackRouter\HttpMethod;
 use FredEmmott\HackRouter\UriBuilder;
 use FredEmmott\HackRouter\UriPattern;
+use FredEmmott\HackRouter\UriPatternDerivatives;
 use FredEmmott\HackRouter\UriParameters;
 
 <<__ConsistentConstruct>>
-abstract class WebController {
-  abstract public function getResponse(): string;
-  abstract public static function getUriPattern(): UriPattern;
+abstract class WebController implements HasUriPattern {
+  // Provides getUriBuilder(), getFastRoutePattern()
+  use UriPatternDerivatives;
 
-  final public static function getUriBuilder(): UriBuilder {
-    return (new UriBuilder(static::getUriPattern()->getParts()));
-  }
+  abstract public function getResponse(): string;
 
   private UriParameters $uriParameters;
   final protected function getUriParameters(): UriParameters {
@@ -82,8 +82,8 @@ final class UriPatternsExample extends BaseRouter<TResponder> {
   ): ImmMap<HttpMethod, ImmMap<string, TResponder>> {
     $urls_to_controllers = Map { };
     foreach (self::getControllers() as $controller) {
-      $pattern = $controller::getUriPattern();
-      $urls_to_controllers[$pattern->getFastRouteFragment()] = $controller;
+      $pattern = $controller::getFastRoutePattern();
+      $urls_to_controllers[$pattern] = $controller;
     }
     return ImmMap {
       HttpMethod::GET => $urls_to_controllers->immutable(),
