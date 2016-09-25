@@ -9,8 +9,8 @@
 
 namespace FredEmmott\HackRouter;
 
-trait UriParametersGetters {
-  require extends UriParametersBase;
+trait RequestParameterGetters {
+  require extends RequestParametersBase;
 
   final public function getString(string $name): string {
     return $this->getSimpleTyped(StringRequestParameter::class, $name);
