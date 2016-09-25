@@ -9,10 +9,8 @@
 
 namespace FredEmmott\HackRouter;
 
-trait UriBuilderGetPath implements UriBuilderWithPath {
+interface UriBuilderWithPath  {
   require extends UriBuilderBase;
 
-  final public function getPath(): string {
-    return $this->getPathImpl();
-  }
+  public function getPath(): string;
 }
