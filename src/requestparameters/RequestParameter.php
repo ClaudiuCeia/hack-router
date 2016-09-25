@@ -9,7 +9,7 @@
 
 namespace FredEmmott\HackRouter;
 
-abstract class UriPatternParameter implements UriPatternPart {
+abstract class RequestParameter implements UriPatternPart {
   /** Convert to T or throw an exception if failed. */
   abstract public function assert(string $input): mixed;
 

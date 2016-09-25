@@ -9,20 +9,15 @@
 
 namespace FredEmmott\HackRouter;
 
-final class UriPatternIntParameter
-extends UriPatternTypedParameter<int> {
+final class StringRequestParameter
+extends TypedRequestParameter<string> {
   <<__Override>>
-  public function assert(string $input): int {
-    invariant(
-      ctype_digit($input),
-      '`%s` is not a valid int',
-      $input,
-    );
-    return (int) $input;
+  public function assert(string $input): string{
+    return $input;
   }
 
   <<__Override>>
   public function getRegExpFragment(): ?string {
-    return '\d+';
+    return null;
   }
 }

@@ -14,7 +14,7 @@ trait UriBuilderSetters {
 
   final public function setString(string $name, string $value): this {
     return $this->setValue(
-      UriPatternStringParameter::class,
+      StringRequestParameter::class,
       $name,
       $value,
     );
@@ -22,7 +22,7 @@ trait UriBuilderSetters {
 
   final public function setInt(string $name, int $value): this {
     return $this->setValue(
-      UriPatternIntParameter::class,
+      IntRequestParameter::class,
       $name,
       $value,
     );
@@ -34,7 +34,7 @@ trait UriBuilderSetters {
     T $value,
   ): this {
     $spec = $this->parameters[$name] ?? null;
-    if ($spec && $spec instanceof UriPatternEnumParameter) {
+    if ($spec && $spec instanceof EnumRequestParameter) {
       // Null case is handled by standard checks in setValue()
       $expected_class = $spec->getEnumName();
       invariant(
@@ -46,7 +46,7 @@ trait UriBuilderSetters {
       );
     }
     return $this->setValue(
-      UriPatternEnumParameter::class,
+      EnumRequestParameter::class,
       $name,
       $class::assert($value),
     );

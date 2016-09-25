@@ -31,7 +31,7 @@ final class UriPatternTest extends \PHPUnit_Framework_TestCase {
 
   public function testStringParamAssertSucceeds(): void {
     $this->assertSame(
-      (new UriPatternStringParameter('foo'))->assert('foo'),
+      (new StringRequestParameter('foo'))->assert('foo'),
       'foo',
     );
   }
@@ -46,7 +46,7 @@ final class UriPatternTest extends \PHPUnit_Framework_TestCase {
 
   public function testIntParamAssertSucceeds(): void {
     $this->assertSame(
-      (new UriPatternIntParameter('foo'))->assert('123'),
+      (new IntRequestParameter('foo'))->assert('123'),
       123, // not a string
     );
   }
@@ -66,7 +66,7 @@ final class UriPatternTest extends \PHPUnit_Framework_TestCase {
    * @expectedException \HH\InvariantException
    */
   public function testIntParamAssertThrows(string $input): void {
-    (new UriPatternIntParameter('foo'))->assert($input);
+    (new IntRequestParameter('foo'))->assert($input);
   }
 
   public function testStringEnumParamFragment(): void {
@@ -83,7 +83,7 @@ final class UriPatternTest extends \PHPUnit_Framework_TestCase {
   public function testStringEnumParamAssertSucceeds(): void {
     $this->assertSame(
       TestStringEnum::FOO,
-      (new UriPatternEnumParameter(TestStringEnum::class, 'param_name'))
+      (new EnumRequestParameter(TestStringEnum::class, 'param_name'))
         ->assert((string) TestStringEnum::FOO),
     );
   }
@@ -91,7 +91,7 @@ final class UriPatternTest extends \PHPUnit_Framework_TestCase {
   public function testIntEnumParamAssertSucceeds(): void {
     $this->assertSame(
       TestIntEnum::FOO,
-      (new UriPatternEnumParameter(TestIntEnum::class, 'param_name'))
+      (new EnumRequestParameter(TestIntEnum::class, 'param_name'))
         ->assert((string) TestIntEnum::FOO),
     );
   }
@@ -100,7 +100,7 @@ final class UriPatternTest extends \PHPUnit_Framework_TestCase {
    * @expectedException UnexpectedValueException
    */
   public function testEnumParamAssertFails(): void {
-    (new UriPatternEnumParameter(TestStringEnum::class, 'param_name'))
+    (new EnumRequestParameter(TestStringEnum::class, 'param_name'))
       ->assert('not a valid enum value');
   }
 }

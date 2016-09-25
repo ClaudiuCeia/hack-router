@@ -10,10 +10,10 @@
 namespace FredEmmott\HackRouter;
 
 abstract class UriParametersBase {
-  private ImmMap<string, UriPatternParameter> $specs;
+  private ImmMap<string, RequestParameter> $specs;
 
   public function __construct(
-    Traversable<UriPatternParameter> $spec_vector,
+    Traversable<RequestParameter> $spec_vector,
     protected ImmMap<string, string> $values,
   ) {
     $specs = Map { };
@@ -23,7 +23,7 @@ abstract class UriParametersBase {
     $this->specs = $specs->immutable();
   }
 
-  final protected function getSpec<T as UriPatternParameter>(
+  final protected function getSpec<T as RequestParameter>(
     classname<T> $class,
     string $name,
   ): T {
@@ -39,7 +39,7 @@ abstract class UriParametersBase {
   }
 
   final protected function getSimpleTyped<T>(
-    classname<UriPatternTypedParameter<T>> $class,
+    classname<TypedRequestParameter<T>> $class,
     string $name,
   ): T {
     $spec = $this->getSpec($class, $name);

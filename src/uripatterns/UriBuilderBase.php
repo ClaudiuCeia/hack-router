@@ -11,7 +11,7 @@ namespace FredEmmott\HackRouter;
 
 abstract class UriBuilderBase {
   protected ImmVector<UriPatternPart> $parts;
-  protected ImmMap<string, UriPatternParameter> $parameters;
+  protected ImmMap<string, RequestParameter> $parameters;
   private Map<string, string> $values = Map { };
 
   public function __construct(
@@ -20,7 +20,7 @@ abstract class UriBuilderBase {
     $this->parts = new ImmVector($parts);
     $parameters = Map { };
     foreach ($parts as $part) {
-      if (!$part instanceof UriPatternParameter) {
+      if (!$part instanceof RequestParameter) {
         continue;
       }
       $parameters[$part->getName()] = $part;
@@ -37,7 +37,7 @@ abstract class UriBuilderBase {
       }
 
       invariant(
-        $part instanceof UriPatternParameter,
+        $part instanceof RequestParameter,
         'expecting all UriPatternParts to be literals or parameters, got %s',
         get_class($part),
       );
@@ -63,7 +63,7 @@ abstract class UriBuilderBase {
   }
 
   final protected function setValue<T>(
-    classname<UriPatternTypedParameter<T>> $parameter_type,
+    classname<TypedRequestParameter<T>> $parameter_type,
     string $name,
     T $value,
   ): this {
