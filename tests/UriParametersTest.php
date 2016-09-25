@@ -5,7 +5,7 @@ namespace FredEmmott\HackRouter;
 use \FredEmmott\HackRouter\Tests\TestIntEnum;
 use \FredEmmott\HackRouter\Tests\TestStringEnum;
 
-final class RequestParametersTest extends \PHPUnit_Framework_TestCase {
+final class UriParametersTest extends \PHPUnit_Framework_TestCase {
   public function testStringParam(): void {
     $parts = [new StringRequestParameter('foo')];
     $data = ImmMap { 'foo' => 'bar' };
