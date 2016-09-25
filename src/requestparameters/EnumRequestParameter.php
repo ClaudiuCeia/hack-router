@@ -10,7 +10,7 @@
 namespace FredEmmott\HackRouter;
 
 class EnumRequestParameter<T>
-extends TypedRequestParameter<T> {
+extends TypedUriParameter<T> {
   public function __construct(
     /* HH_FIXME[2053] */
     private classname<\HH\BuiltinEnum<T>> $enumClass,

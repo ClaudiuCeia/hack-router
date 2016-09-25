@@ -63,7 +63,7 @@ abstract class UriBuilderBase {
   }
 
   final protected function setValue<T>(
-    classname<TypedRequestParameter<T>> $parameter_type,
+    classname<TypedUriParameter<T>> $parameter_type,
     string $name,
     T $value,
   ): this {

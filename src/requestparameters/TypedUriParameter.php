@@ -9,15 +9,10 @@
 
 namespace FredEmmott\HackRouter;
 
-final class StringRequestParameter
-extends TypedUriParameter<string> {
-  <<__Override>>
-  public function assert(string $input): string{
-    return $input;
-  }
-
-  <<__Override>>
-  public function getRegExpFragment(): ?string {
-    return null;
+abstract class TypedUriParameter<T>
+extends UriParameter
+implements TypedRequestParameter<T> {
+  public function getUriFragment(T $value): string {
+    return (string) $value;
   }
 }
