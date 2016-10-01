@@ -15,18 +15,21 @@ namespace FredEmmott\HackRouter\Examples\UrlPatternsExample;
 
 require_once('../vendor/autoload.php');
 
-use FredEmmott\HackRouter\BaseRouter;
-use FredEmmott\HackRouter\HasUriPattern;
-use FredEmmott\HackRouter\HttpMethod;
-use FredEmmott\HackRouter\UriBuilder;
-use FredEmmott\HackRouter\UriPattern;
-use FredEmmott\HackRouter\UriPatternDerivatives;
-use FredEmmott\HackRouter\RequestParameters;
+use FredEmmott\HackRouter\{
+  BaseRouter,
+  GetFastRoutePatternFromUriPattern,
+  GetUriBuilderFromUriPattern,
+  HasUriPattern,
+  HttpMethod,
+  RequestParameters,
+  UriBuilder,
+  UriPattern
+};
 
 <<__ConsistentConstruct>>
 abstract class WebController implements HasUriPattern {
-  // Provides getUriBuilder(), getFastRoutePattern()
-  use UriPatternDerivatives;
+  use GetFastRoutePatternFromUriPattern;
+  use GetUriBuilderFromUriPattern;
 
   abstract public function getResponse(): string;
 
