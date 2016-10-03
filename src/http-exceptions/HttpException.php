@@ -12,5 +12,5 @@
 
 namespace FredEmmott\HackRouter;
 
-abstract class HTTPException extends \Exception {
+abstract class HttpException extends \Exception {
 }
