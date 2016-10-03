@@ -2,7 +2,7 @@
 
 namespace FredEmmott\HackRouter;
 
-class UnknownRouterException extends InternalServerErrorException {
+class UnknownRouterException extends \Exception {
   public function __construct(
     private array<mixed> $fastRouteData,
   ) {

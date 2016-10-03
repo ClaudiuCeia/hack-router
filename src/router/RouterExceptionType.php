@@ -6,9 +6,10 @@
  *  This source code is licensed under the BSD-style license found in the
  *  LICENSE file in the root directory of this source tree.
  */
-namespace FredEmmott\HackRouter;
 
-enum HttpMethod: string {
-  GET = 'GET';
-  POST = 'POST';
-}
+ namespace FredEmmott\HackRouter;
+
+ enum RouterExceptionType: string {
+   NOT_FOUND = 'not found';
+   METHOD_NOT_ALLOWED = 'method not allowed';
+ }

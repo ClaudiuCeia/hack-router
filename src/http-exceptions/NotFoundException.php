@@ -12,5 +12,5 @@
 
 namespace FredEmmott\HackRouter;
 
-class NotFoundException extends HTTPException {
+final class NotFoundException extends HttpException {
 }
