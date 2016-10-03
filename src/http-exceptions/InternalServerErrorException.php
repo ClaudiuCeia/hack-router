@@ -12,5 +12,5 @@
 
 namespace FredEmmott\HackRouter;
 
-class MethodNotAllowedException extends HTTPException {
+class InternalServerErrorException extends HTTPException {
 }
