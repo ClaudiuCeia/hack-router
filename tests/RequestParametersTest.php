@@ -7,7 +7,10 @@ use \FredEmmott\HackRouter\Tests\TestStringEnum;
 
 final class RequestParametersTest extends \PHPUnit_Framework_TestCase {
   public function testStringParam(): void {
-    $parts = [new StringRequestParameter('foo')];
+    $parts = [new StringRequestParameter(
+      StringRequestParameterSlashes::WITHOUT_SLASHES,
+      'foo',
+    )];
     $data = ImmMap { 'foo' => 'bar' };
     $this->assertSame(
       'bar',
@@ -28,7 +31,10 @@ final class RequestParametersTest extends \PHPUnit_Framework_TestCase {
    * @expectedException \HH\InvariantException
    */
   public function testFetchingStringAsInt(): void {
-    $parts = [new StringRequestParameter('foo')];
+    $parts = [new StringRequestParameter(
+      StringRequestParameterSlashes::WITHOUT_SLASHES,
+      'foo',
+    )];
     $data = ImmMap { 'foo' => 'bar' };
     (new RequestParameters($parts, [], $data))->getInt('foo');
   }
@@ -98,7 +104,10 @@ final class RequestParametersTest extends \PHPUnit_Framework_TestCase {
   public function testGetOptional(): void {
     $params = new RequestParameters(
       [],
-      [ new StringRequestParameter('foo') ],
+      [new StringRequestParameter(
+        StringRequestParameterSlashes::WITHOUT_SLASHES,
+        'foo',
+      )],
       ImmMap { 'foo' => 'bar' },
     );
     $this->assertSame(
@@ -110,7 +119,10 @@ final class RequestParametersTest extends \PHPUnit_Framework_TestCase {
   public function testGetMissingOptional(): void {
     $params = new RequestParameters(
       [],
-      [ new StringRequestParameter('foo') ],
+      [new StringRequestParameter(
+        StringRequestParameterSlashes::WITHOUT_SLASHES,
+        'foo',
+      )],
       ImmMap {},
     );
     $this->assertSame(
@@ -125,7 +137,10 @@ final class RequestParametersTest extends \PHPUnit_Framework_TestCase {
   public function testGetOptionalAsRequired(): void {
     $params = new RequestParameters(
       [],
-      [ new StringRequestParameter('foo') ],
+      [new StringRequestParameter(
+        StringRequestParameterSlashes::WITHOUT_SLASHES,
+        'foo'
+      )],
       ImmMap { 'foo' => 'bar' },
     );
     $params->getString('foo');
@@ -136,7 +151,10 @@ final class RequestParametersTest extends \PHPUnit_Framework_TestCase {
    */
   public function testGetRequiredAsOptional(): void {
     $params = new RequestParameters(
-      [ new StringRequestParameter('foo') ],
+      [new StringRequestParameter(
+        StringRequestParameterSlashes::WITHOUT_SLASHES,
+        'foo',
+      )],
       [],
       ImmMap { 'foo' => 'bar' },
     );
