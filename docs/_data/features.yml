@@ -1,0 +1,23 @@
+- title: UriPatterns
+  text: |
+    Generate FastRoute fragments, URIs (for linking), and retrieve URI parameters in a consistent and type-safe way.
+  #image: images/android.svg
+
+- title: Parameter retrieval
+  text: |
+    Parameters can be retrevied, with types checked at runtime both against the values, and the definition.
+  #image: images/apple.svg
+  
+- title: Link to controllers
+  text: |
+    ```php
+      $link = UserPageController::getUriBuilder()
+        ->setString('user_name', 'Mr Hankey')
+        ->getPath();
+    ```
+  #image: images/facebook.png
+
+- title: Codegen
+  text: |
+    Allows defining routes and parameters in the controllers, which in turn allows the typechecker to catch more errors, as well as IDE autocomplete functionality to support parameters.
+  #image: images/instagram.png

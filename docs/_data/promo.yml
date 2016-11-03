@@ -1,0 +1,11 @@
+# This file determines the list of promotional elements added to the header of \
+# your site's homepage. Full list of plugins are shown
+
+- type: plugin_row
+  children:
+  - type: button
+    href: docs/getting-started.html
+    text: Get Started
+  - type: button
+    href: https://example.com
+    text: Another Button
