@@ -1,9 +1,9 @@
 # Site settings
 permalink: /blog/:year/:month/:day/:title.html
 title: Hack Router
-tagline: Type-safe request routing, parameter retrieval, and link generation
-description: >
+tagline: 
   Type-safe request routing, parameter retrieval, and link generation built on top of nikic/fast-route, with PSR-7 support.
+# description: >
 # fbappid: "1615782811974223"
 # gacode: "UA-12345-6"
 # baseurl determines the subpath of your site. For example if you're using an
